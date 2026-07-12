@@ -1,15 +1,11 @@
-"""状态检查端点"""
+"""健康检查端点"""
+from http.server import BaseHTTPRequestHandler
 import json
 
-def handler(req):
-    return {
-        'statusCode': 200,
-        'headers': {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        },
-        'body': json.dumps({
-            'status': 'ok',
-            'services': {'movebank': True, 'acled': True}
-        })
-    }
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        self.wfile.write(json.dumps({'status': 'ok', 'service': 'pocketworld-api'}).encode())
