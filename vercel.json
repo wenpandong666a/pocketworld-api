@@ -1,7 +1,6 @@
 {
   "name": "pocketworld-api",
   "version": "1.0.0",
-  "description": "PocketWorld API代理 - Movebank + ACLED",
   "dependencies": {
     "requests": "*"
   },
