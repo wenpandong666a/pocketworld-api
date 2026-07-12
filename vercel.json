@@ -1,0 +1,28 @@
+{
+  "name": "pocketworld-api",
+  "version": "1.0.0",
+  "description": "PocketWorld API代理 - Movebank + ACLED",
+  "dependencies": {
+    "requests": "*"
+  },
+  "builds": [
+    {
+      "src": "api/movebank.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "api/acled.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "api/status.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    { "src": "/api/movebank", "dest": "/api/movebank.py" },
+    { "src": "/api/movebank/preload", "dest": "/api/movebank.py" },
+    { "src": "/api/acled", "dest": "/api/acled.py" },
+    { "src": "/api/status", "dest": "/api/status.py" }
+  ]
+}
